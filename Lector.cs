@@ -21,6 +21,13 @@ namespace biblioteca
             this.librosPrestados = librosPrestados;
         }
 
+        public Lector(string nombre, string apellido, int dni)
+        {
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.dni = dni;
+        }
+
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
         public int Dni { get => dni; set => dni = value; }
@@ -40,7 +47,7 @@ namespace biblioteca
         public bool PedirLibro(Libro libro)
         {
             bool resultado = false;
-            if( this.CantidadPrestamos() <= 3)
+            if( this.CantidadPrestamos() < 3)
             {
                 this.LibrosPrestados.Add(libro);
                 resultado = true;

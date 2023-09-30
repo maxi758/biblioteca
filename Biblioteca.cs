@@ -88,7 +88,7 @@
             return resultado;
         }
 
-        public bool PrestarLibro(string titulo)
+        private bool PrestarLibro(string titulo)
         {
             bool resultado = false;
             Libro libroEncontrado = BuscarLibro(titulo);
@@ -128,7 +128,7 @@
                     {
                         if (lector.PedirLibro(libroEncontrado))
                         {
-                            libroEncontrado.Prestado = true;
+                            PrestarLibro(titulo);
                             resultado = true;
                             Console.WriteLine("PRESTAMO EXITOSO");
                         }
@@ -144,6 +144,18 @@
             return resultado;
 
         }
+        public bool AgregarLector(Lector lector)
+        {
+            bool resultado = false;
+            Lector lectorEncontrado = BuscarLectorPorDni(lector.Dni);
+            if (lectorEncontrado == null)
+            {
+                Lectores.Add(lector);
+                resultado = true;
+            }
+            return resultado;
+        }
+
 
         public Lector BuscarLectorPorDni(int dni)
         {
@@ -161,7 +173,8 @@
         {
             foreach (Lector lector in lectores)
             {
-                
+                lector.MostrarLector();
+                Console.WriteLine();
             }
         } 
 

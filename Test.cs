@@ -10,13 +10,23 @@ namespace biblioteca
     {
         public static void Main()
         {
-            Libro libro1 = new Libro("El señor de los anillos", "J.R.R. Tolkien", "IVREA");
+            Libro libro1 = new Libro("El señor de los anillos: La Comunidad del Anillo", "J.R.R. Tolkien", "IVREA");
+            Libro libro2 = new Libro("El señor de los anillos: Las Dos Torres", "J.R.R. Tolkien", "IVREA");
+            Libro libro3 = new Libro("El señor de los anillos: El Retorno del Rey", "J.R.R. Tolkien", "IVREA");
             Biblioteca biblioteca = new Biblioteca();
             biblioteca.AgregarLibro(libro1);
+            biblioteca.AgregarLibro(libro2);
+            biblioteca.AgregarLibro(libro3);
             biblioteca.AgregarLibro("El hobbit", "J.R.R. Tolkien", "IVREA");
             biblioteca.MostrarLibros();
-            string cadena =  "  a     ";
-            Console.WriteLine(Test.VerificarString(cadena));
+            Lector lector = new Lector("maxi", "gil", 33149494);
+            biblioteca.AgregarLector(lector);
+            biblioteca.RealizarPrestamo("El señor de los anillos: La Comunidad del Anillo", 33149494);
+            biblioteca.RealizarPrestamo("El señor de los anillos: Las Dos Torres", 33149494);
+            biblioteca.RealizarPrestamo("El señor de los anillos: El Retorno del Rey", 33149494);
+            biblioteca.RealizarPrestamo("El señor de los anillos", 33149494);
+            Console.WriteLine(lector.CantidadPrestamos());
+            biblioteca.RealizarPrestamo("El hobbit", 33149494);
         }
         public static bool VerificarString(string str)
         {
