@@ -106,10 +106,14 @@
             }
             else
             {
-                if (Lectores.Contains(lector))
+                if (Lectores.Contains(lector) )
                 {
-                    libroEncontrado.Prestado = true;
-                    resultado = true;
+                    if (lector.PedirLibro(libroEncontrado))
+                    {
+                        libroEncontrado.Prestado = true;
+                        resultado = true;
+                    }
+
                 }
             }
             return resultado;
@@ -127,6 +131,14 @@
             }
             return lectorEncontrado;
         }
+
+        public void MostrarLectores()
+        {
+            foreach (Lector lector in lectores)
+            {
+                
+            }
+        } 
 
     }
 }

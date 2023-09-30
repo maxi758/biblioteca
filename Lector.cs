@@ -26,6 +26,26 @@ namespace biblioteca
         public int Dni { get => dni; set => dni = value; }
         public List<Libro> LibrosPrestados { get => librosPrestados; set => librosPrestados = value; }
 
-
+        public void MostrarLector()
+        {
+            Console.WriteLine("Nombre:", Nombre);
+            Console.WriteLine("Apellido:", Apellido);
+            Console.WriteLine("DNI:", Dni);
+            Console.WriteLine("Préstamos de libros vigentes:", LibrosPrestados.Count);
+        }
+        public int CantidadPrestamos()
+        {
+            return LibrosPrestados.Count;
+        }
+        public bool PedirLibro(Libro libro)
+        {
+            bool resultado = false;
+            if( this.CantidadPrestamos() <= 3)
+            {
+                this.LibrosPrestados.Add(libro);
+                resultado = true;
+            }
+            return resultado;
+        }
     }
 }
