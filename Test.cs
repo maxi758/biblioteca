@@ -15,6 +15,19 @@ namespace biblioteca
             biblioteca.AgregarLibro(libro1);
             biblioteca.AgregarLibro("El hobbit", "J.R.R. Tolkien", "IVREA");
             biblioteca.MostrarLibros();
+            string cadena =  "  a     ";
+            Console.WriteLine(Test.VerificarString(cadena));
+        }
+        public static bool VerificarString(string str)
+        {
+            bool resultado = true;
+            if (string.IsNullOrEmpty(str) || str.Trim().Length == 0)
+            {
+                resultado = false;
+
+            }
+
+            return resultado;
 
         }
     }

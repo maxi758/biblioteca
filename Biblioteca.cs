@@ -100,7 +100,7 @@
         {
             bool resultado = false;
             Libro libroEncontrado = BuscarLibro(titulo);
-            if (lector == null || titulo.Any() || libroEncontrado == null || libroEncontrado.Prestado)
+            if (lector == null || Test.VerificarString(titulo) || libroEncontrado == null || libroEncontrado.Prestado)
             {
                 return resultado;
             }
