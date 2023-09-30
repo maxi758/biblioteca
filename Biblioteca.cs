@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace biblioteca
+﻿namespace biblioteca
 {
     internal class Biblioteca
     {
         private List<Libro> libros = new List<Libro>();
+        private List<Lector> lectores = new List<Lector>();
+
+        public List<Libro> Libros { get => libros; set => libros = value; }
+        public List<Lector> Lectores { get => lectores; set => lectores = value; }
 
         public bool AgregarLibro(string titulo, string autor, string editorial)
         {
@@ -17,7 +15,7 @@ namespace biblioteca
             if (libroEncontrado == null)
             {
                 Libro libro = new Libro(titulo, autor, editorial);
-                libros.Add(libro);
+                Libros.Add(libro);
                 resultado = true;
             }
             return resultado;
@@ -29,15 +27,32 @@ namespace biblioteca
             Libro libroEncontrado = BuscarLibro(libro.Titulo);
             if (libroEncontrado == null)
             {
-                libros.Add(libro);
+                Libros.Add(libro);
                 resultado = true;
+            }
+            return resultado;
+        }
+
+        public bool AgregarListadoLibros(params string[] lista) { 
+            bool resultado = true;
+            foreach (string titulo in lista)
+            {
+                Libro libroEncontrado = BuscarLibro(titulo);
+                if (libroEncontrado == null)
+                {
+                    Libros.Add(libroEncontrado);
+                }
+                else
+                {
+                    return false;
+                }
             }
             return resultado;
         }
 
         public void MostrarLibros()
         {
-            foreach (Libro libro in libros)
+            foreach (Libro libro in Libros)
             {
                 libro.MostrarLibro();
                 Console.WriteLine();
@@ -47,7 +62,7 @@ namespace biblioteca
         public Libro BuscarLibro(string titulo)
         {
             Libro libroEncontrado = null;
-            foreach (Libro libro in libros)
+            foreach (Libro libro in Libros)
             {
                 if (libro.Titulo == titulo)
                 {
@@ -63,7 +78,7 @@ namespace biblioteca
             Libro libroEncontrado = BuscarLibro(titulo);
             if (libroEncontrado != null)
             {
-                libros.Remove(libroEncontrado);
+                Libros.Remove(libroEncontrado);
                 resultado = true;
             }
             return resultado;
@@ -79,6 +94,18 @@ namespace biblioteca
                 resultado = true;
             }
             return resultado;
+        }
+
+        public Lector BuscarLectorPorDni(int dni)
+        {
+            Lector lectorEncontrado = null;
+            foreach(Lector lector in Lectores) { 
+                if (lector.Dni == dni)
+                {
+                    lectorEncontrado = lector;
+                }
+            }
+            return lectorEncontrado;
         }
 
     }
