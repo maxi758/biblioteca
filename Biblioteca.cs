@@ -62,11 +62,15 @@
         public Libro BuscarLibro(string titulo)
         {
             Libro libroEncontrado = null;
-            foreach (Libro libro in Libros)
+
+            if (Test.VerificarString(titulo))
             {
-                if (libro.Titulo == titulo)
+                foreach (Libro libro in Libros)
                 {
-                    libroEncontrado = libro;
+                    if (libro.Titulo == titulo)
+                    {
+                        libroEncontrado = libro;
+                    }
                 }
             }
             return libroEncontrado;
@@ -96,26 +100,47 @@
             return resultado;
         }
 
-        public bool RealizarPrestamo(string titulo, Lector lector)
+        public bool RealizarPrestamo(string titulo, int dni)
         {
             bool resultado = false;
+
             Libro libroEncontrado = BuscarLibro(titulo);
-            if (lector == null || Test.VerificarString(titulo) || libroEncontrado == null || libroEncontrado.Prestado)
+            
+            if (libroEncontrado == null)
             {
-                return resultado;
+                Console.WriteLine("LIBRO INEXISTENTE");
             }
             else
             {
-                if (Lectores.Contains(lector) )
+                if (libroEncontrado.Prestado)
                 {
-                    if (lector.PedirLibro(libroEncontrado))
+                    Console.WriteLine("EL LIBRO YA FUE PRESTADO");
+                }
+                else
+                {
+                    Lector lector = BuscarLectorPorDni(dni);
+
+                    if (lector == null)
                     {
-                        libroEncontrado.Prestado = true;
-                        resultado = true;
+                        Console.WriteLine("LECTOR INEXISTENTE");
+                    }
+                    else
+                    {
+                        if (lector.PedirLibro(libroEncontrado))
+                        {
+                            libroEncontrado.Prestado = true;
+                            resultado = true;
+                            Console.WriteLine("PRESTAMO EXITOSO");
+                        }
+                        else
+                        {
+                            Console.WriteLine("TOPE DE PRESTAMO ALCANZADO");
+                        }
                     }
 
-                }
+                }                   
             }
+            
             return resultado;
 
         }
