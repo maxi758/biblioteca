@@ -96,6 +96,26 @@
             return resultado;
         }
 
+        public bool RealizarPrestamo(string titulo, Lector lector)
+        {
+            bool resultado = false;
+            Libro libroEncontrado = BuscarLibro(titulo);
+            if (lector == null || titulo.Any() || libroEncontrado == null || libroEncontrado.Prestado)
+            {
+                return resultado;
+            }
+            else
+            {
+                if (Lectores.Contains(lector))
+                {
+                    libroEncontrado.Prestado = true;
+                    resultado = true;
+                }
+            }
+            return resultado;
+
+        }
+
         public Lector BuscarLectorPorDni(int dni)
         {
             Lector lectorEncontrado = null;
