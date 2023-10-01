@@ -33,14 +33,14 @@
             return resultado;
         }
 
-        public bool AgregarListadoLibros(params string[] lista) { 
+        public bool AgregarListadoLibros(params Libro[] lista) { 
             bool resultado = true;
-            foreach (string titulo in lista)
+            foreach (Libro libro in lista)
             {
-                Libro libroEncontrado = BuscarLibro(titulo);
+                Libro libroEncontrado = BuscarLibro(libro.Titulo);
                 if (libroEncontrado == null)
                 {
-                    Libros.Add(libroEncontrado);
+                    Libros.Add(libro);
                 }
                 else
                 {
@@ -58,6 +58,7 @@
                 Console.WriteLine();
             }
         }
+
 
         public Libro BuscarLibro(string titulo)
         {
