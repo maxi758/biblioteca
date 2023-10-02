@@ -28,10 +28,10 @@ namespace biblioteca
 
         public void MostrarLibro()
         {
-            Console.WriteLine("Titulo: " + titulo);
-            Console.WriteLine("Autor: " + autor);
-            Console.WriteLine("Editorial: " + editorial);
-            Console.WriteLine("Prestado: " + prestado);
+            Console.WriteLine("Titulo: " + Titulo);
+            Console.WriteLine("Autor: " + Autor);
+            Console.WriteLine("Editorial: " + Editorial);
+            Console.WriteLine("Prestado: " + Prestado);
         }
         
         public void PrestarLibro()

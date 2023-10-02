@@ -20,20 +20,24 @@ namespace biblioteca
             biblioteca.AgregarLibro(libro3);
             biblioteca.AgregarLibro("El hobbit", "J.R.R. Tolkien", "IVREA");
             biblioteca.MostrarLibros();
-            Lector lector = new Lector("maxi", "gil", 33149494);
+            Lector lector = new Lector("Juan", "Perez", 33149494);
             biblioteca.AgregarLector(lector);
-            biblioteca.RealizarPrestamo("El señor de los anillos: La Comunidad del Anillo", 33149494);
-            biblioteca.RealizarPrestamo("El señor de los anillos: Las Dos Torres", 33149494);
-            biblioteca.RealizarPrestamo("El señor de los anillos: El Retorno del Rey", 33149494);
-            biblioteca.RealizarPrestamo("El señor de los anillos", 33149494);
+            Console.WriteLine(biblioteca.RealizarPrestamo("El señor de los anillos: La Comunidad del Anillo", 33149494));
+            Console.WriteLine(biblioteca.RealizarPrestamo("El señor de los anillos: Las Dos Torres", 33149494));
+            Console.WriteLine(biblioteca.RealizarPrestamo("El señor de los anillos: El Retorno del Rey", 33149494));
+            Console.WriteLine(biblioteca.RealizarPrestamo("El señor de los anillos", 33149494));
             Console.WriteLine(lector.CantidadPrestamos());
-            biblioteca.RealizarPrestamo("El hobbit", 33149494);
+            Console.WriteLine(biblioteca.RealizarPrestamo("El hobbit", 33149494));
+            Console.WriteLine("Listado de Libros");
             biblioteca.MostrarLibros();
+            Console.WriteLine("Listado de Lectores");
             biblioteca.MostrarLectores();
-            Libro libro4 = new Libro("El señor de los membrillo: La Comunidad del Anillo", "J.R.R. Tolkien", "IVREA");
+            Libro libro4 = new Libro("El señor de los membrillos: La Comunidad del Anillo", "J.R.R. Tolkien", "IVREA");
             Libro libro5 = new Libro("El señor de los membrillos: Las Dos Torres", "J.R.R. Tolkien", "IVREA");
             Libro libro6 = new Libro("El señor de los membrillos: El Retorno del Rey", "J.R.R. Tolkien", "IVREA");
             biblioteca.AgregarListadoLibros(libro4, libro5, libro6);
+            biblioteca.EliminarLibro("El señor de los anillos: La Comunidad del Anillo");
+            Console.WriteLine("Listado de Libros");
             biblioteca.MostrarLibros();
         }
         public static bool VerificarString(string str)

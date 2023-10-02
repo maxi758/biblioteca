@@ -15,17 +15,17 @@ namespace biblioteca
 
         public Lector(string nombre, string apellido, int dni, List<Libro> librosPrestados)
         {
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.dni = dni;
-            this.librosPrestados = librosPrestados;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.Dni = dni;
+            this.LibrosPrestados = librosPrestados;
         }
 
         public Lector(string nombre, string apellido, int dni)
         {
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.dni = dni;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.Dni = dni;
         }
 
         public string Nombre { get => nombre; set => nombre = value; }
@@ -35,10 +35,10 @@ namespace biblioteca
 
         public void MostrarLector()
         {
-            Console.WriteLine("Nombre:", Nombre);
-            Console.WriteLine("Apellido:", Apellido);
-            Console.WriteLine("DNI:", Dni);
-            Console.WriteLine("Préstamos de libros vigentes:", LibrosPrestados.Count);
+            Console.WriteLine("Nombre: "+ Nombre);
+            Console.WriteLine("Apellido: " + Apellido);
+            Console.WriteLine("DNI:" + Dni);
+            Console.WriteLine("Préstamos de libros vigentes: " + CantidadPrestamos());
         }
         public int CantidadPrestamos()
         {
@@ -53,6 +53,11 @@ namespace biblioteca
                 resultado = true;
             }
             return resultado;
+        }
+
+        public override string ToString()
+        {
+            return "Nombre: " + Nombre + "\nApellido: " + Apellido + "\nDNI: " + Dni + "\nPrestamos de libros vigentes:" + CantidadPrestamos() ;
         }
     }
 }

@@ -101,21 +101,21 @@
             return resultado;
         }
 
-        public bool RealizarPrestamo(string titulo, int dni)
+        public string RealizarPrestamo(string titulo, int dni)
         {
-            bool resultado = false;
+            string resultado;
 
             Libro libroEncontrado = BuscarLibro(titulo);
             
             if (libroEncontrado == null)
             {
-                Console.WriteLine("LIBRO INEXISTENTE");
+                resultado = "LIBRO INEXISTENTE";
             }
             else
             {
                 if (libroEncontrado.Prestado)
                 {
-                    Console.WriteLine("EL LIBRO YA FUE PRESTADO");
+                    resultado = "EL LIBRO YA FUE PRESTADO";
                 }
                 else
                 {
@@ -123,19 +123,18 @@
 
                     if (lector == null)
                     {
-                        Console.WriteLine("LECTOR INEXISTENTE");
+                        resultado = "LECTOR INEXISTENTE";
                     }
                     else
                     {
                         if (lector.PedirLibro(libroEncontrado))
                         {
                             PrestarLibro(titulo);
-                            resultado = true;
-                            Console.WriteLine("PRESTAMO EXITOSO");
+                            resultado = "PRESTAMO EXITOSO";
                         }
                         else
                         {
-                            Console.WriteLine("TOPE DE PRESTAMO ALCANZADO");
+                            resultado = "TOPE DE PRESTAMO ALCANZADO";
                         }
                     }
 
@@ -172,7 +171,7 @@
 
         public void MostrarLectores()
         {
-            foreach (Lector lector in lectores)
+            foreach (Lector lector in Lectores)
             {
                 lector.MostrarLector();
                 Console.WriteLine();
